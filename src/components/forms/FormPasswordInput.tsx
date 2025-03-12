@@ -1,3 +1,10 @@
+import { Eye, EyeClosed } from "lucide-react";
+import { useState } from "react";
+import { useFormContext } from "react-hook-form";
+import { useTranslation } from "react-i18next";
+
+import { cn } from "@/lib/utils";
+
 import {
   FormControl,
   FormField,
@@ -5,12 +12,7 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
-import { useFormContext } from "react-hook-form";
-import { useTranslation } from "react-i18next";
 import { Input, InputProps } from "../ui/input";
-import { cn } from "@/lib/utils";
-import { useState } from "react";
-import { Eye, EyeClosed } from "lucide-react";
 
 interface Props extends InputProps {
   name: string;
@@ -37,7 +39,7 @@ export default function FormPasswordInput({
       render={({ field: { value, onChange } }) => (
         <FormItem className={cn("flex flex-col items-start w-full", className)}>
           {label && (
-            <FormLabel className="font-medium text-[#344054] dark:text-white">
+            <FormLabel className="font-medium text-[#99998C] dark:text-white">
               {t(label)}
             </FormLabel>
           )}

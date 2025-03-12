@@ -1,3 +1,8 @@
+import { useFormContext } from "react-hook-form";
+import { useTranslation } from "react-i18next";
+
+import { cn } from "@/lib/utils";
+
 import {
   FormControl,
   FormField,
@@ -5,10 +10,7 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
-import { useFormContext } from "react-hook-form";
-import { useTranslation } from "react-i18next";
 import { Input, InputProps } from "../ui/input";
-import { cn } from "@/lib/utils";
 
 interface Props extends InputProps {
   name: string;
@@ -16,6 +18,7 @@ interface Props extends InputProps {
   placeholder?: string;
   type?: string;
   className?: string;
+  classNameInput?: string;
 }
 
 export default function FormTextInput({
@@ -24,6 +27,7 @@ export default function FormTextInput({
   label,
   placeholder,
   className,
+  classNameInput,
   ...props
 }: Props) {
   const { control } = useFormContext();
@@ -37,14 +41,14 @@ export default function FormTextInput({
       render={({ field }) => (
         <FormItem className={cn("flex flex-col items-start w-full", className)}>
           {label && (
-            <FormLabel className="font-medium text-[#344054] dark:text-white">
+            <FormLabel className="font-medium text-[#99998C] dark:text-white">
               {t(label)}
             </FormLabel>
           )}
           <FormControl className="w-full">
             <Input
               type={type ?? "text"}
-              className="w-full"
+              className={cn("flex flex-col items-start w-full", classNameInput)}
               placeholder={placeholder ? t(placeholder) : ""}
               {...field}
               onChange={(e) => {

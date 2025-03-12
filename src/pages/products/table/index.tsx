@@ -1,11 +1,11 @@
 import { parseAsInteger, useQueryState } from "nuqs";
 
+import FilterSite from "@/components/filter-site";
+import TopSite from "@/components/top-site";
 import { DataTable } from "@/components/ui/data-table";
 
 import { ProductColumns } from "./columns";
 import useProduct from "./queries";
-import TopSite from "@/components/top-site";
-import FilterSite from "@/components/filter-site";
 
 export default function Page() {
   const [limit] = useQueryState("limit", parseAsInteger.withDefault(10));
@@ -25,6 +25,7 @@ export default function Page() {
       <TopSite />
       <FilterSite />
       <DataTable
+      className="mx-4"
         isLoading={isLoading}
         columns={ProductColumns}
         data={data?.items ?? []}

@@ -10,7 +10,7 @@ export type CropData = {
   details: string;
   gallery: [];
   harvest_duration: number;
-  id: number;
+  id: string;
   is_common: boolean;
   main_image: {
     aws_path: string;
@@ -26,7 +26,7 @@ export type CropData = {
 export type CropQuery = {
   populate: string;
   sort: string;
-  filters: {};
+  filters: object;
   pagination: {
     pageSize: number;
     page: number;

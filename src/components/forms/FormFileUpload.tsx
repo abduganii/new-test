@@ -1,14 +1,16 @@
-import { FormField, FormItem, FormMessage } from "../ui/form";
-import { UploadFile } from "@/service/apiHelpers";
 import { CloudUpload, Eye, LoaderCircle, Trash2 } from "lucide-react";
-import { useState } from "react";
-import { cn } from "@/lib/utils";
+import { ChangeEvent, useState } from "react";
 import {
   ControllerRenderProps,
   FieldValues,
   useFormContext,
 } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+
+import { cn } from "@/lib/utils";
+import { UploadFile } from "@/service/apiHelpers";
+
+import { FormField, FormItem, FormMessage } from "../ui/form";
 
 interface iProps {
   label: string;
@@ -33,11 +35,11 @@ export default function FormFileUpload({
   const { control } = useFormContext();
 
   const hendleimg = async (
-    e: any,
+    e: ChangeEvent<HTMLInputElement>,
     field: ControllerRenderProps<FieldValues, string>
   ) => {
     setLoadingFile(true);
-    if (e.target.files[0] && e.target.files[0]?.size < maxFileSize) {
+    if (e.target.files && e.target.files[0] && e.target.files[0].size < maxFileSize) {
       const file = e.target.files[0];
       const formData = new FormData();
       formData.append("file", file);

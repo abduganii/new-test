@@ -4,9 +4,6 @@ export const apiRoutes = {
   products: "/product",
   login: "/auth/login",
   userMe: "/user/info/me",
-  activityTemplates: "/activity-templates",
-  diseases: "/diseases",
-  reels: "/reels",
-  fertilizers: "/fertilizers",
-  fertilizations: "/fertilizations",
+  parties: "/product",
+  dataLibrary:'/product'
 } as const;

@@ -1,4 +1,5 @@
 export type ProductsData = {
+  id:string;
   code: string;
   model: {
     id: string;

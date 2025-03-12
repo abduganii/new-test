@@ -1,3 +1,12 @@
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { useFormContext } from "react-hook-form";
+import { useTranslation } from "react-i18next";
+
+import { cn } from "@/lib/utils";
+import { getAllData } from "@/service/apiHelpers";
+import { TResponse } from "@/types";
+
 import {
   FormControl,
   FormField,
@@ -5,14 +14,7 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
-import { useFormContext } from "react-hook-form";
-import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
 import ShadcnSelect from "./Select";
-import { TResponse } from "@/types";
-import { getAllData } from "@/service/apiHelpers";
-import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
 
 interface Props<TQuery> {
   name: string;
@@ -47,12 +49,12 @@ export default function FormSelectInput<IData, TQuery>({
     enabled: open,
     queryFn: () => getAllData<TResponse<IData>, TQuery>(fetchUrl, queries),
     select: (res) => ({
-      data: res?.data.map((item) => ({
+      data: res?.items.map((item) => ({
         value: fieldNames?.value
-          ? (item as Record<string, any>)[fieldNames.value]
+          ? (item as Record<string, string>)[fieldNames.value]
           : String(item),
         label: fieldNames?.label
-          ? (item as Record<string, any>)[fieldNames.label]
+          ? (item as Record<string, string>)[fieldNames.label]
           : String(item),
       })),
       meta: res.meta,
@@ -69,7 +71,7 @@ export default function FormSelectInput<IData, TQuery>({
             className={cn("flex flex-col items-start w-full", className)}
           >
             {label && (
-              <FormLabel className="mb-1 font-medium text-[#344054] dark:text-white">
+              <FormLabel className="mb-1 font-medium text-[#99998C] dark:text-white">
                 {t(label)}
               </FormLabel>
             )}

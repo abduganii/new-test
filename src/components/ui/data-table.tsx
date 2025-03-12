@@ -27,6 +27,7 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
   pageCount?: number;
   isLoading: boolean;
+  className?: string;
 }
 
 export function DataTable<TData, TValue>({
@@ -34,6 +35,7 @@ export function DataTable<TData, TValue>({
   data,
   pageCount = 0,
   isLoading,
+  className,
 }: DataTableProps<TData, TValue>) {
   const [limit, setLimit] = useQueryState(
     "limit",
@@ -71,7 +73,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="rounded-md border m-4">
+    <div className={className}>
       {isLoading ? (
         <TableLoading limit={limit} table={table} />
       ) : (

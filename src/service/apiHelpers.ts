@@ -1,17 +1,15 @@
 import qs from "qs";
-import { toast } from "sonner";
 
-import { useAuthStore } from "@/store/auth-store";
 import api from "./fetchInstance";
 
-interface iError {
-  data: null;
-  error: {
-    message: string;
-    name: string;
-    status: number;
-  };
-}
+// interface iError {
+//   data: null;
+//   error: {
+//     message: string;
+//     name: string;
+//     status: number;
+//   };
+// }
 
 export const getAllData = async <T, Q>(url: string, query?: Q): Promise<T> => {
   const params = query
@@ -51,7 +49,7 @@ export const UpdateData = async <D extends object>(
   return res.data;
 };
 
-export const DeleteData = async (url: string, id: number) => {
+export const DeleteData = async (url: string, id: string) => {
   const res = await api.delete(`${url}/${id}`);
   return res.data;
 };
@@ -61,11 +59,11 @@ export const UploadFile = async (data: FormData, folder: string) => {
   return res.data;
 };
 
-const handleError = (error: iError) => {
-  const removeToken = useAuthStore.getState().removeToken;
+// const handleError = (error: iError) => {
+//   const removeToken = useAuthStore.getState().removeToken;
 
-  if (error.error.status == 401) {
-    removeToken();
-  }
-  toast.error(error.error.message);
-};
+//   if (error.error.status == 401) {
+//     removeToken();
+//   }
+//   toast.error(error.error.message);
+// };

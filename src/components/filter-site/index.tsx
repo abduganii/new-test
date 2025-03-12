@@ -12,7 +12,7 @@ export default function FilterSite() {
         <FilterIcons />
       </button>
       <div className="border-[#D1D0C8] text-black px-[14px]   gap-4 shadow-none rounded-none border-[1px]  flex items-center justify-center bg-[#DBDAD1]">
-        <p className="opacity-45 text-[#212121] flex items-center gap-[2px]">
+        <p className="opacity-45 text-foreground flex items-center gap-[2px]">
           <CheckIcons /> Все:
         </p>
         <p className="text-[14px] leading-[19px]">1266 шт</p>

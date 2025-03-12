@@ -1,12 +1,12 @@
-import { ComboboxDemo } from "@/components/forms/Combobox";
+import { Plus } from "lucide-react";
+import { parseAsString,useQueryState } from "nuqs";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+
 import ShadcnSelect from "@/components/forms/Select";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import debounce from "@/utils/debounce";
-import { Plus } from "lucide-react";
-import { useQueryState, parseAsString } from "nuqs";
-import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 
 const confirmeArr = [
   {
@@ -30,8 +30,7 @@ export default function Filters() {
     "confirme",
     parseAsString.withDefault("all")
   );
-  const [_, setSearch] = useQueryState("search");
-  const [compony, setCompony] = useQueryState("compony");
+  const [, setSearch] = useQueryState("search");
   return (
     <div className="bg-white py-4 px-2  gap-2 rounded-t-sm flex  ">
       <ShadcnSelect
@@ -41,12 +40,7 @@ export default function Filters() {
         // placeholder={placeholder ? t(placeholder) : ""}
         onChange={(e) => setConfirme(e || "")}
       />
-      <ComboboxDemo
-        value={compony || ""}
-        onChange={(e) => setCompony(e || "")}
-        options={confirmeArr}
-        placeholder={"company"}
-      />
+      
       <Input
         onChange={debounce(
           (e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value),

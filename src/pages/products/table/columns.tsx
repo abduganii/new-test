@@ -1,13 +1,9 @@
 import { ColumnDef } from "@tanstack/react-table";
 
-import TableImage from "@/components/table-image";
 import TableAction from "@/components/table-action";
 import { apiRoutes } from "@/service/apiRoutes";
-import { useTranslation } from "react-i18next";
-import { Badge } from "@/components/ui/badge";
-import TablePopaver from "@/components/table-popaver";
+
 import { ProductsData } from "../type";
-import { Download } from "lucide-react";
 
 export const ProductColumns: ColumnDef<ProductsData>[] = [
   {
@@ -60,7 +56,7 @@ export const ProductColumns: ColumnDef<ProductsData>[] = [
   {
     header: "color",
     cell: ({ row }) => {
-      return <p>{row.original.color.title}</p>;
+      return <p>{row.original.color?.title}</p>;
     },
   },
   {

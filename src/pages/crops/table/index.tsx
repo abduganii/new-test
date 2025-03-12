@@ -29,8 +29,8 @@ export default function Page() {
       <DataTable
         isLoading={isLoading}
         columns={paymentColumns}
-        data={data?.data ?? []}
-        pageCount={data?.meta.pagination.pageCount}
+        data={data?.items ?? []}
+        pageCount={data?.meta.totalPages}
       />
     </div>
   );

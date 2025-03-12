@@ -1,3 +1,8 @@
+import { useFormContext } from "react-hook-form";
+import { useTranslation } from "react-i18next";
+
+import { cn } from "@/lib/utils";
+
 import {
   FormControl,
   FormField,
@@ -5,9 +10,6 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
-import { useFormContext } from "react-hook-form";
-import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
 import { Textarea } from "../ui/textarea";
 
 interface Props {
@@ -34,7 +36,7 @@ export default function FormTextArea({
       render={({ field }) => (
         <FormItem className={cn("flex flex-col items-start w-full", className)}>
           {label && (
-            <FormLabel className="font-medium text-[#344054] dark:text-white">
+            <FormLabel className="font-medium text-[#99998C] dark:text-white">
               {t(label)}
             </FormLabel>
           )}

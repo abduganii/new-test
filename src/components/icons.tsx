@@ -749,7 +749,7 @@ export const QrCodeIcons = () => {
     </svg>
   );
 };
-export const EditIcons = ({ color }: any) => {
+export const EditIcons = ({ color }: {color:string}) => {
   return (
     <svg
       width="16"

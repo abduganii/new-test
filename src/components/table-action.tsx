@@ -1,16 +1,14 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { MoreHorizontal, Trash2 } from "lucide-react";
-import { Button } from "./ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
+import { useQueryState } from "nuqs";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { DeleteData } from "@/service/apiHelpers";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
+
+import { DeleteData } from "@/service/apiHelpers";
+
+import { Button } from "./ui/button";
 import {
   Dialog,
   DialogClose,
@@ -20,7 +18,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
-import { useState } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 
 export default function TableAction({
   url,
@@ -33,10 +36,11 @@ export default function TableAction({
   ShowPreview?: boolean;
   ShowUpdate?: boolean;
   ShowDelete?: boolean;
-  id: number;
+  id: string;
 }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [, setId] = useQueryState("id");
   const [open, setOpen] = useState<boolean>(false);
   const queryClient = useQueryClient();
   const { mutate } = useMutation({
@@ -61,7 +65,7 @@ export default function TableAction({
 
         <DropdownMenuContent align="end">
           {ShowUpdate ? (
-            <DropdownMenuItem onClick={() => navigate(`${url}/${id}`)}>
+            <DropdownMenuItem onClick={() => setId(id)}>
               {t("update")}
             </DropdownMenuItem>
           ) : (

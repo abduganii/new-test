@@ -1,12 +1,13 @@
 import { ColumnDef } from "@tanstack/react-table";
+import { useTranslation } from "react-i18next";
+
+import TableAction from "@/components/table-action";
+import TableImage from "@/components/table-image";
+import TablePopaver from "@/components/table-popaver";
+import { Badge } from "@/components/ui/badge";
+import { apiRoutes } from "@/service/apiRoutes";
 
 import { CropData } from "../type";
-import TableImage from "@/components/table-image";
-import TableAction from "@/components/table-action";
-import { apiRoutes } from "@/service/apiRoutes";
-import { useTranslation } from "react-i18next";
-import { Badge } from "@/components/ui/badge";
-import TablePopaver from "@/components/table-popaver";
 
 export const paymentColumns: ColumnDef<CropData>[] = [
   {
@@ -17,7 +18,7 @@ export const paymentColumns: ColumnDef<CropData>[] = [
   {
     id: "main_image",
     header: "image",
-    cell: ({ row }: any) => {
+    cell: ({ row }) => {
       return (
         <>
           <TableImage url={row.original?.main_image?.aws_path || null} />
@@ -45,7 +46,8 @@ export const paymentColumns: ColumnDef<CropData>[] = [
   {
     accessorKey: "is_common",
     header: "isCommon",
-    cell: ({ row }: any) => {
+    cell: ({ row }) => {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
       const { t } = useTranslation();
       return (
         <>
