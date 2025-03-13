@@ -2,9 +2,9 @@
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { useQueryState } from "nuqs";
 
+import FormComboboxDemoInput from "@/components/forms/FormCombobox";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogFooter, DialogHeader } from "@/components/ui/dialog";
-import FormComboboxDemoInput from "@/components/forms/FormCombobox";
 
 export default function FormContent() {
   const [id, setId] = useQueryState("id");

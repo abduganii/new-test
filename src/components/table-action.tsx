@@ -72,7 +72,7 @@ export default function TableAction({
             ""
           )}
           {ShowPreview ? (
-            <DropdownMenuItem onClick={() => navigate(`${url}/${id}/info`)}>
+            <DropdownMenuItem onClick={() => navigate(`${id}/info`)}>
               {t("singlePage")}
             </DropdownMenuItem>
           ) : (
@@ -83,10 +83,9 @@ export default function TableAction({
               <DialogTrigger onClick={() => setOpen(true)} className="w-full">
                 <p
                   className={
-                    "px-[6px] text-start rounded-md hover:bg-muted py-[4px]"
+                    "px-[6px] text-start text-sm rounded-md hover:bg-muted py-[4px]"
                   }
                 >
-                  {" "}
                   {t("delete")}
                 </p>
               </DialogTrigger>
