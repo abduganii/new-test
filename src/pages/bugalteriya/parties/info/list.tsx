@@ -14,7 +14,7 @@ import {
 } from "@/components/icons";
 import { DataTable } from "@/components/ui/data-table";
 
-const data: any[] = [
+const data: unknown[] = [
   {
     id: 1,
     image: ["/image.png"],
